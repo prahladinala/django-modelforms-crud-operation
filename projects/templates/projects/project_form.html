@@ -1,0 +1,24 @@
+<!-- WE USE THIS TEMPLATE FOR UPDATE PAGE AND CREATE PAGE -->
+{% extends 'main.html' %}
+{% block content %}
+<h1>Project Form</h1>
+<form method="POST">
+    {% csrf_token %}
+    <!-- {{form}} ALL SIDE BY SIDE-->
+    <!-- {{form.as_p}} ONE AFTER THE OTHER-->
+    <!-- {{form.title}} ONLY SPECIFIC FIELDS -->
+
+    <!-- {{form.title.label}} WITH TITLE/LABEL-->
+    <!-- {{form.title}} WITH TITLE/LABEL-->
+
+    <!-- FOR LOOP -->
+    {% for field in form %}
+    {{field.label}}
+    {{field}}
+    <br>
+    {% endfor %}
+    <input type="submit">
+</form>
+{% endblock %}
+
+<!-- DOCUMENTATION: https://docs.djangoproject.com/en/3.2/topics/forms/modelforms/ -->
