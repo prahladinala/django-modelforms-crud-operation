@@ -2,12 +2,13 @@
 from django.forms import ModelForm
 from .models import Project
 
+
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        # fields = ['title', 'description']
+        fields = ['title', 'description', 'demo_link', 'source_link', 'tags']
         # OR
-        fields = '__all__'
+        # fields = '__all__'
 
 # class MODELNAMEForm(ModelForm):
 #     class Meta:
