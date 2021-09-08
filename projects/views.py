@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.http import HttpResponse
 from .models import Project
@@ -21,9 +21,12 @@ def createProject(request):
     form = ProjectForm()
 
     if request.method == 'POST':
-        print(request.POST)
-        # print(request.POST['title'])
-        # form = ProjectForm(request.POST)
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            # form.is_valid() > Django MODELFORMS checks for any suspisios thinks or not
+            form.save()  # .save() creates that object and will add new object to database
+            # if everything goes write then redirect user to projects > name of root dir >urls.py
+            return redirect('projects')
 
     context = {'form': form}
     return render(request, 'projects/project_form.html', context)
